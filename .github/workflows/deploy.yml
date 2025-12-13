@@ -21,7 +21,7 @@ jobs:
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install flask flasgger pyyaml bandit
 
       - name: Run Bandit Security Check
         run: bandit -r .
@@ -35,7 +35,7 @@ jobs:
           node-version: 18
 
       - name: Install Redocly CLI
-        run: npm i -g @redocly/cli@latest
+        run: npm install -g @redocly/cli@latest
 
       - name: Build ReDoc Documentation
         run: redocly build-docs docs/openapi.yaml --output redoc-static/index.html

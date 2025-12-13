@@ -26,6 +26,9 @@ jobs:
       - name: Run Bandit Security Check
         run: bandit -r .
 
+      - name: Create docs folder
+        run: mkdir -p docs
+
       - name: Generate OpenAPI YAML
         run: python generate_openapi.py
 

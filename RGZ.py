@@ -86,4 +86,4 @@ def delete_contact(contact_id):
     return jsonify({'error': 'Контакт не найден'}), 404
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)

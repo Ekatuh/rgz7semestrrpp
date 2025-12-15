@@ -74,9 +74,22 @@ def get_contact(contact_id):
 @app.route('/contacts/<int:contact_id>', methods=['DELETE'])
 @swag_from({
     'tags': ['Contacts'],
+    'parameters': [
+        {
+            'name': 'contact_id',
+            'in': 'path',
+            'type': 'integer',
+            'required': True,
+            'description': 'Идентификатор контакта'
+        }
+    ],
     'responses': {
-        200: {'description': 'Контакт удалён'},
-        404: {'description': 'Контакт не найден'}
+        200: {
+            'description': 'Контакт удалён'
+        },
+        404: {
+            'description': 'Контакт не найден'
+        }
     }
 })
 def delete_contact(contact_id):

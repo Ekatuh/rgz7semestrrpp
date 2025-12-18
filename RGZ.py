@@ -50,6 +50,15 @@ def create_contact():
 @app.route('/contacts/<int:contact_id>', methods=['GET'])
 @swag_from({
     'tags': ['Contacts'],
+    'parameters': [
+        {
+            'name': 'contact_id',
+            'in': 'path',
+            'type': 'integer',
+            'required': True,
+            'description': 'Идентификатор контакта'
+        }
+    ],
     'responses': {
         200: {
             'description': 'Информация о контакте',

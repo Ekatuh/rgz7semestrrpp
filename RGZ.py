@@ -50,7 +50,6 @@ def create_contact():
 @app.route('/contacts/<int:contact_id>', methods=['GET'])
 @swag_from({
     'tags': ['Contacts'],
-    'summary': 'Получить контакт по идентификатору',
     'description': (
         'Основной GET-запрос для чтения данных телефонной книги. '
         'Используется внешними пользователями для получения информации '

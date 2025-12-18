@@ -50,28 +50,55 @@ def create_contact():
 @app.route('/contacts/<int:contact_id>', methods=['GET'])
 @swag_from({
     'tags': ['Contacts'],
+    'summary': 'Получить контакт по идентификатору',
+    'description': (
+        'Основной GET-запрос для чтения данных телефонной книги. '
+        'Используется внешними пользователями для получения информации '
+        'о конкретном контакте по его идентификатору.'
+    ),
     'parameters': [
         {
             'name': 'contact_id',
             'in': 'path',
             'type': 'integer',
             'required': True,
-            'description': 'Идентификатор контакта'
+            'example': 1,
+            'description': 'Уникальный идентификатор контакта'
         }
     ],
     'responses': {
         200: {
-            'description': 'Информация о контакте',
+            'description': 'Контакт найден',
             'schema': {
                 'type': 'object',
                 'properties': {
-                    'id': {'type': 'integer'},
-                    'name': {'type': 'string'},
-                    'phone': {'type': 'string'}
+                    'id': {
+                        'type': 'integer',
+                        'example': 1
+                    },
+                    'name': {
+                        'type': 'string',
+                        'example': 'Иван Иванов'
+                    },
+                    'phone': {
+                        'type': 'string',
+                        'example': '+79990001122'
+                    }
                 }
             }
         },
-        404: {'description': 'Контакт не найден'}
+        404: {
+            'description': 'Контакт с таким идентификатором не найден',
+            'schema': {
+                'type': 'object',
+                'properties': {
+                    'error': {
+                        'type': 'string',
+                        'example': 'Контакт не найден'
+                    }
+                }
+            }
+        }
     }
 })
 def get_contact(contact_id):
